@@ -43,4 +43,15 @@ public class VettoreDenso implements Vettore {
 
     return new VettoreDenso(newVettore);
   }
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder();
+    sb.append("(");
+    for (int i = 0; i < dim(); i++) {
+      sb.append(val(i) + (i < dim() - 1 ? ", " : ""));
+    }
+    sb.append(")");
+    return sb.toString();
+  }
 }
