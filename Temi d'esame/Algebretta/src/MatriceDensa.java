@@ -49,7 +49,7 @@ public class MatriceDensa extends MatriceAbstract {
     int[][] newMatrice = new int[matrice.length][matrice.length];
     for (int row = 0; row < matrice.length; row++) {
       for (int i = 0; i < newMatrice.length; i++) {
-        newMatrice[i][row] = matrice[row].val(i) * alpha;
+        newMatrice[row][i] = matrice[row].val(i) * alpha;
       }
     }
 
@@ -77,7 +77,7 @@ public class MatriceDensa extends MatriceAbstract {
 
       for (int row = 0; row < matrice.length; row++) {
         for (int i = 0; i < newMatrice.length; i++) {
-          newMatrice[i][row] = matrice[row].val(i) + m.val(row, i);
+          newMatrice[row][i] = matrice[row].val(i) + m.val(row, i);
         }
       }
 
