@@ -1,4 +1,4 @@
-public class MatriceDiagonale implements Matrice {
+public class MatriceDiagonale extends MatriceAbstract {
 
   private int[] diagonale;
 
@@ -39,7 +39,7 @@ public class MatriceDiagonale implements Matrice {
   }
 
   @Override
-  public Matrice prodottoScalare(int alpha) {
+  public MatriceInterface prodottoScalare(int alpha) {
     int[] newDiagonale = new int[diagonale.length];
     for (int i = 0; i < diagonale.length; i++) {
       newDiagonale[i] = diagonale[i] * alpha;
@@ -54,7 +54,7 @@ public class MatriceDiagonale implements Matrice {
    *                                       Diagonale, Densa)
    */
   @Override
-  public Matrice somma(Matrice m) {
+  public MatriceInterface somma(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(
@@ -79,22 +79,24 @@ public class MatriceDiagonale implements Matrice {
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
 
-   /**
+  /**
    * @throws UnsupportedOperationException se la matrice m è di tipo non
    *                                       supportato (diverso da Nulla, Identità,
    *                                       Diagonale, Densa)
    */
   @Override
-  public Matrice prodottoMatriciale(Matrice m) {
+  public MatriceInterface prodottoMatriciale(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(
           "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
               ")");
 
-    if (m instanceof MatriceNulla) return new MatriceNulla(this.dim());
+    if (m instanceof MatriceNulla)
+      return new MatriceNulla(this.dim());
 
-    if (m instanceof MatriceIdentita) return this;
+    if (m instanceof MatriceIdentita)
+      return this;
 
     if (m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];

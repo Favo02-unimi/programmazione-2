@@ -1,4 +1,4 @@
-public class MatriceDensa implements Matrice {
+public class MatriceDensa extends MatriceAbstract {
 
   private Vettore[] matrice;
 
@@ -45,7 +45,7 @@ public class MatriceDensa implements Matrice {
   }
 
   @Override
-  public Matrice prodottoScalare(int alpha) {
+  public MatriceInterface prodottoScalare(int alpha) {
     int[][] newMatrice = new int[matrice.length][matrice.length];
     for (int row = 0; row < matrice.length; row++) {
       for (int i = 0; i < newMatrice.length; i++) {
@@ -62,7 +62,7 @@ public class MatriceDensa implements Matrice {
    *                                       Diagonale, Identità, Densa)
    */
   @Override
-  public Matrice somma(Matrice m) {
+  public MatriceInterface somma(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(
@@ -93,7 +93,7 @@ public class MatriceDensa implements Matrice {
    *                                       Diagonale, Identità, Densa)
    */
   @Override
-  public Matrice prodottoMatriciale(Matrice m) {
+  public MatriceInterface prodottoMatriciale(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(

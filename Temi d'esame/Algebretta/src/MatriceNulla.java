@@ -1,4 +1,4 @@
-public class MatriceNulla implements Matrice {
+public class MatriceNulla extends MatriceAbstract {
 
   private int size;
 
@@ -34,12 +34,12 @@ public class MatriceNulla implements Matrice {
   }
 
   @Override
-  public Matrice prodottoScalare(int alpha) {
+  public MatriceInterface prodottoScalare(int alpha) {
     return this;
   }
 
   @Override
-  public Matrice somma(Matrice m) {
+  public MatriceInterface somma(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(
@@ -50,7 +50,7 @@ public class MatriceNulla implements Matrice {
   }
 
   @Override
-  public Matrice prodottoMatriciale(Matrice m) {
+  public MatriceInterface prodottoMatriciale(MatriceInterface m) {
     // controllo dimensione m
     if (m.dim() != this.dim())
       throw new IllegalArgumentException(
