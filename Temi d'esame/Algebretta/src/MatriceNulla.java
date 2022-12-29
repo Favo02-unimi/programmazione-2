@@ -24,13 +24,13 @@ public class MatriceNulla extends MatriceAbstract {
   @Override
   public int val(int row, int i) {
     // controllo bounds row
-    if (row < 0 || row >= this.size) {
-      throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + this.size);
+    if (row < 0 || row >= this.dim()) {
+      throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + this.dim());
     }
     // controllo bounds i
-    if (i < 0 || i >= this.size) {
+    if (i < 0 || i >= this.dim()) {
       throw new IllegalArgumentException(
-          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.size);
+          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.dim());
     }
 
     return 0;

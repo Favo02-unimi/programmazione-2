@@ -25,14 +25,14 @@ public class MatriceDiagonale extends MatriceAbstract {
   @Override
   public int val(int row, int i) {
     // controllo bounds row
-    if (row < 0 || row >= diagonale.length) {
+    if (row < 0 || row >= this.dim()) {
       throw new IllegalArgumentException(
-          "Riga non valida, fornita: " + row + " dimensione matrice: " + diagonale.length);
+          "Riga non valida, fornita: " + row + " dimensione matrice: " + this.dim());
     }
     // controllo bounds i
-    if (i < 0 || i >= diagonale.length) {
+    if (i < 0 || i >= this.dim()) {
       throw new IllegalArgumentException(
-          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + diagonale.length);
+          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.dim());
     }
 
     if (row == i) {
@@ -44,9 +44,9 @@ public class MatriceDiagonale extends MatriceAbstract {
 
   @Override
   public MatriceInterface matricePerScalare(int alpha) {
-    int[] newDiagonale = new int[diagonale.length];
-    for (int i = 0; i < diagonale.length; i++) {
-      newDiagonale[i] = diagonale[i] * alpha;
+    int[] newDiagonale = new int[this.dim()];
+    for (int i = 0; i < this.dim(); i++) {
+      newDiagonale[i] = this.val(i, i) * alpha;
     }
 
     return new MatriceDiagonale(newDiagonale);
@@ -72,8 +72,8 @@ public class MatriceDiagonale extends MatriceAbstract {
 
     if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
-      for (int i = 0; i < diagonale.length; i++) {
-        newDiagonale[i] = diagonale[i] + m.val(i, i);
+      for (int i = 0; i < this.dim(); i++) {
+        newDiagonale[i] = this.val(i, i) + m.val(i, i);
       }
 
       return new MatriceDiagonale(newDiagonale);
@@ -110,8 +110,8 @@ public class MatriceDiagonale extends MatriceAbstract {
 
     if (m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
-      for (int i = 0; i < newDiagonale.length; i++) {
-        newDiagonale[i] = this.diagonale[i] * m.val(i, i);
+      for (int i = 0; i < this.dim(); i++) {
+        newDiagonale[i] = this.val(i, i) * m.val(i, i);
       }
 
       return new MatriceDiagonale(newDiagonale);

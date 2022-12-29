@@ -21,10 +21,10 @@ public class VettoreDenso implements Vettore {
 
   @Override
   public Vettore vettorePerVettore(int alpha) {
-    int[] newVettore = new int[vettore.length];
+    int[] newVettore = new int[this.dim()];
 
-    for (int i = 0; i < vettore.length; i++) {
-      newVettore[i] = vettore[i] * alpha;
+    for (int i = 0; i < this.dim(); i++) {
+      newVettore[i] = this.val(i) * alpha;
     }
 
     return new VettoreDenso(newVettore);
@@ -37,7 +37,7 @@ public class VettoreDenso implements Vettore {
           "Vettori non conformi. Grandezza vettore corrente: " + this.dim() + ", vettore fornito: " + v.dim());
     }
 
-    int[] newVettore = new int[vettore.length];
+    int[] newVettore = new int[this.dim()];
 
     for (int i = 0; i < this.dim(); i++) {
       newVettore[i] = this.val(i) + v.val(i);

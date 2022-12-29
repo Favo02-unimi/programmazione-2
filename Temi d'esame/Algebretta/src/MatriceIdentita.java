@@ -25,13 +25,13 @@ public class MatriceIdentita extends MatriceAbstract {
   @Override
   public int val(int row, int i) {
     // controllo bounds row
-    if (row < 0 || row >= size) {
-      throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + size);
+    if (row < 0 || row >= this.dim()) {
+      throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + this.dim());
     }
     // controllo bounds i
-    if (i < 0 || i >= size) {
+    if (i < 0 || i >= this.dim()) {
       throw new IllegalArgumentException(
-          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + size);
+          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.dim());
     }
 
     if (row == i) {
@@ -44,11 +44,11 @@ public class MatriceIdentita extends MatriceAbstract {
   @Override
   public MatriceInterface matricePerScalare(int alpha) {
     if (alpha == 0) {
-      return new MatriceNulla(this.size);
+      return new MatriceNulla(this.dim());
     }
 
-    int[] newDiagonale = new int[this.size];
-    for (int i = 0; i < newDiagonale.length; i++) {
+    int[] newDiagonale = new int[this.dim()];
+    for (int i = 0; i < this.dim(); i++) {
       newDiagonale[i] = alpha;
     }
 
@@ -70,12 +70,12 @@ public class MatriceIdentita extends MatriceAbstract {
     }
 
     if (m instanceof MatriceNulla) {
-      return new MatriceNulla(this.size);
+      return new MatriceNulla(this.dim());
     }
 
     if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
-      int[] newDiagonale = new int[this.size];
-      for (int i = 0; i < newDiagonale.length; i++) {
+      int[] newDiagonale = new int[this.dim()];
+      for (int i = 0; i < this.dim(); i++) {
         newDiagonale[i] = 1 + m.val(i, i);
       }
 
@@ -104,7 +104,7 @@ public class MatriceIdentita extends MatriceAbstract {
     }
 
     if (m instanceof MatriceNulla) {
-      return new MatriceNulla(this.size);
+      return new MatriceNulla(this.dim());
     }
 
     if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
