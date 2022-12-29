@@ -72,7 +72,7 @@ public class MatriceDensa implements Matrice {
     if (m instanceof MatriceNulla)
       return new MatriceNulla(this.dim());
 
-    if (m instanceof MatriceDiagonale || m instanceof MatriceIdentità || m instanceof MatriceDensa) {
+    if (m instanceof MatriceDiagonale || m instanceof MatriceIdentita || m instanceof MatriceDensa) {
       int[][] newMatrice = new int[matrice.length][matrice.length];
 
       for (int row = 0; row < matrice.length; row++) {
@@ -103,7 +103,7 @@ public class MatriceDensa implements Matrice {
     if (m instanceof MatriceNulla)
       return new MatriceNulla(this.dim());
 
-    if (m instanceof MatriceDiagonale || m instanceof MatriceIdentità) {
+    if (m instanceof MatriceDiagonale || m instanceof MatriceIdentita) {
       int[] diagonale = new int[this.dim()];
       for (int i = 0; i < diagonale.length; i++) {
         diagonale[i] = this.matrice[i].val(i) * m.val(i, i);
@@ -127,5 +127,4 @@ public class MatriceDensa implements Matrice {
 
     throw new UnsupportedOperationException("Tipo di matrice non supportato");
   }
-
 }

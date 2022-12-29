@@ -60,7 +60,7 @@ public class Parser {
    * @param operando la stringa contenente l'operando da analizzare.
    * @return true sse l'operando è una matrice.
    */
-  public static boolean èMatrice(final String operando) {
+  public static boolean isMatrice(final String operando) {
     return MATRICE.matcher(operando).matches();
   }
 
@@ -121,7 +121,7 @@ public class Parser {
    * @param operando la stringa contenente l'operando da analizzare.
    * @return true sse l'operando è una vettore.
    */
-  public static boolean èVettore(final String operando) {
+  public static boolean isVettore(final String operando) {
     return VETTORE.matcher(operando).matches();
   }
 
@@ -150,7 +150,7 @@ public class Parser {
    * @param operando la stringa contenente l'operando da analizzare.
    * @return true sse la stringa è uno scalare.
    */
-  public static boolean èScalare(final String operando) {
+  public static boolean isScalare(final String operando) {
     return SCALARE.matcher(operando).matches();
   }
 

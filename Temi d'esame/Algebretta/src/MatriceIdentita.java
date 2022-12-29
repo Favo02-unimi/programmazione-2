@@ -1,4 +1,4 @@
-public class MatriceIdentità implements Matrice {
+public class MatriceIdentita implements Matrice {
 
   private int size;
 
@@ -9,7 +9,7 @@ public class MatriceIdentità implements Matrice {
    * @throws IllegalArgumentException se il vettore che rappresenta la diagonale
    *                                  ha dimensione negativa
    */
-  public MatriceIdentità(int size) {
+  public MatriceIdentita(int size) {
     if (size < 0)
       throw new IllegalArgumentException("La dimensione della matrice nulla non può essere negativa, fornita: " + size);
 
@@ -62,7 +62,7 @@ public class MatriceIdentità implements Matrice {
 
     if (m instanceof MatriceNulla) return new MatriceNulla(this.size);
 
-    if (m instanceof MatriceIdentità || m instanceof MatriceDiagonale) {
+    if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.size];
       for (int i = 0; i < newDiagonale.length; i++) {
         newDiagonale[i] = 1 + m.val(i, i);
@@ -93,11 +93,10 @@ public class MatriceIdentità implements Matrice {
 
     if (m instanceof MatriceNulla) return new MatriceNulla(this.size);
 
-    if (m instanceof MatriceIdentità || m instanceof MatriceDiagonale) return m;
+    if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) return m;
 
     if (m instanceof MatriceDensa) return m.prodottoMatriciale(this);
 
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
-
 }

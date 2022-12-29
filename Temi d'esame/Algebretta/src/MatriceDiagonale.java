@@ -64,7 +64,7 @@ public class MatriceDiagonale implements Matrice {
     if (m instanceof MatriceNulla)
       return this;
 
-    if (m instanceof MatriceIdentità || m instanceof MatriceDiagonale) {
+    if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
       for (int i = 0; i < diagonale.length; i++) {
         newDiagonale[i] = diagonale[i] + m.val(i, i);
@@ -94,7 +94,7 @@ public class MatriceDiagonale implements Matrice {
 
     if (m instanceof MatriceNulla) return new MatriceNulla(this.dim());
 
-    if (m instanceof MatriceIdentità) return this;
+    if (m instanceof MatriceIdentita) return this;
 
     if (m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
@@ -111,5 +111,4 @@ public class MatriceDiagonale implements Matrice {
 
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
-
 }
