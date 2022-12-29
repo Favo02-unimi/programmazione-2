@@ -50,4 +50,16 @@ public interface MatriceInterface {
    *                                  dalla matrice corrente
    */
   public MatriceInterface prodottoMatriciale(MatriceInterface m);
+
+  /**
+   * Restituisce il vettore risultato moltiplicando la matrice corrente con il
+   * vettore v
+   * 
+   * @param v vettore da moltiplicare alla matrice corrente
+   * @return il vettore risultato moltiplicando la matrice corrente con il vettore
+   *         v
+   * @throws IllegalArgumentException se il vettore v è di dimensione diversa
+   *                                  dalla matrice corrente
+   */
+  public Vettore prodottoPerVettore(Vettore v);
 }

@@ -71,7 +71,7 @@ public class Main {
               System.out.println(M.prodottoMatriciale(N));
             } else if (Parser.isVettore(right)) {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));
-              System.out.println("unsupported");
+              System.out.println(M.prodottoPerVettore(v));
             }
           }
         }
