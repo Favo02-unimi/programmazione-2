@@ -10,8 +10,9 @@ public class MatriceDiagonale extends MatriceAbstract {
    *                                  ha dimensione negativa
    */
   public MatriceDiagonale(int[] diagonale) {
-    if (diagonale.length < 0)
+    if (diagonale.length < 0) {
       throw new IllegalArgumentException("La lunghezza della diagonale non può essere negativa");
+    }
 
     this.diagonale = diagonale;
   }
@@ -24,22 +25,25 @@ public class MatriceDiagonale extends MatriceAbstract {
   @Override
   public int val(int row, int i) {
     // controllo bounds row
-    if (row < 0 || row >= diagonale.length)
+    if (row < 0 || row >= diagonale.length) {
       throw new IllegalArgumentException(
           "Riga non valida, fornita: " + row + " dimensione matrice: " + diagonale.length);
+    }
     // controllo bounds i
-    if (i < 0 || i >= diagonale.length)
+    if (i < 0 || i >= diagonale.length) {
       throw new IllegalArgumentException(
           "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + diagonale.length);
+    }
 
-    if (row == i)
+    if (row == i) {
       return diagonale[i];
-    else
+    } else {
       return 0;
+    }
   }
 
   @Override
-  public MatriceInterface prodottoScalare(int alpha) {
+  public MatriceInterface matricePerScalare(int alpha) {
     int[] newDiagonale = new int[diagonale.length];
     for (int i = 0; i < diagonale.length; i++) {
       newDiagonale[i] = diagonale[i] * alpha;
@@ -54,15 +58,17 @@ public class MatriceDiagonale extends MatriceAbstract {
    *                                       Diagonale, Densa)
    */
   @Override
-  public MatriceInterface somma(MatriceInterface m) {
+  public MatriceInterface matricePiuMatrice(MatriceInterface m) {
     // controllo dimensione m
-    if (m.dim() != this.dim())
+    if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
               ")");
+    }
 
-    if (m instanceof MatriceNulla)
+    if (m instanceof MatriceNulla) {
       return this;
+    }
 
     if (m instanceof MatriceIdentita || m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
@@ -73,8 +79,9 @@ public class MatriceDiagonale extends MatriceAbstract {
       return new MatriceDiagonale(newDiagonale);
     }
 
-    if (m instanceof MatriceDensa)
-      return m.somma(this);
+    if (m instanceof MatriceDensa) {
+      return m.matricePiuMatrice(this);
+    }
 
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
@@ -85,18 +92,21 @@ public class MatriceDiagonale extends MatriceAbstract {
    *                                       Diagonale, Densa)
    */
   @Override
-  public MatriceInterface prodottoMatriciale(MatriceInterface m) {
+  public MatriceInterface matricePerMatrice(MatriceInterface m) {
     // controllo dimensione m
-    if (m.dim() != this.dim())
+    if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
               ")");
+    }
 
-    if (m instanceof MatriceNulla)
+    if (m instanceof MatriceNulla) {
       return new MatriceNulla(this.dim());
+    }
 
-    if (m instanceof MatriceIdentita)
+    if (m instanceof MatriceIdentita) {
       return this;
+    }
 
     if (m instanceof MatriceDiagonale) {
       int[] newDiagonale = new int[this.dim()];
@@ -108,7 +118,7 @@ public class MatriceDiagonale extends MatriceAbstract {
     }
 
     if (m instanceof MatriceDensa) {
-      return m.prodottoMatriciale(this);
+      return m.matricePerMatrice(this);
     }
 
     throw new UnsupportedOperationException("Matrice di tipo non supportato");

@@ -9,8 +9,9 @@ public class MatriceNulla extends MatriceAbstract {
    * @throws IllegalArgumentException se la size passata è negativa
    */
   public MatriceNulla(int size) {
-    if (size < 0)
+    if (size < 0) {
       throw new IllegalArgumentException("La dimensione della matrice nulla non può essere negativa, fornita: " + size);
+    }
 
     this.size = size;
   }
@@ -23,39 +24,43 @@ public class MatriceNulla extends MatriceAbstract {
   @Override
   public int val(int row, int i) {
     // controllo bounds row
-    if (row < 0 || row >= this.size)
+    if (row < 0 || row >= this.size) {
       throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + this.size);
+    }
     // controllo bounds i
-    if (i < 0 || i >= this.size)
+    if (i < 0 || i >= this.size) {
       throw new IllegalArgumentException(
           "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.size);
+    }
 
     return 0;
   }
 
   @Override
-  public MatriceInterface prodottoScalare(int alpha) {
+  public MatriceInterface matricePerScalare(int alpha) {
     return this;
   }
 
   @Override
-  public MatriceInterface somma(MatriceInterface m) {
+  public MatriceInterface matricePiuMatrice(MatriceInterface m) {
     // controllo dimensione m
-    if (m.dim() != this.dim())
+    if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
               ")");
+    }
 
     return m;
   }
 
   @Override
-  public MatriceInterface prodottoMatriciale(MatriceInterface m) {
+  public MatriceInterface matricePerMatrice(MatriceInterface m) {
     // controllo dimensione m
-    if (m.dim() != this.dim())
+    if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
               ")");
+    }
 
     return this;
   }

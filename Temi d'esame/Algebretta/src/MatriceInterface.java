@@ -27,7 +27,7 @@ public interface MatriceInterface {
    * @return la matrice prodotto scalare tra la matrice corrente e la scalare
    *         alpha
    */
-  public MatriceInterface prodottoScalare(int alpha);
+  public MatriceInterface matricePerScalare(int alpha);
 
   /**
    * Restituisce la matrice somma tra la matrice corrente e la matrice m, se le
@@ -38,7 +38,7 @@ public interface MatriceInterface {
    * @throws IllegalArgumentException se la matrice m è di dimensione diversa
    *                                  dalla matrice corrente
    */
-  public MatriceInterface somma(MatriceInterface m);
+  public MatriceInterface matricePiuMatrice(MatriceInterface m);
 
   /**
    * Restituisce la matrice proddo matriciale tra la matrice corrente e la matrice
@@ -49,7 +49,7 @@ public interface MatriceInterface {
    * @throws IllegalArgumentException se la matrice m è di dimensione diversa
    *                                  dalla matrice corrente
    */
-  public MatriceInterface prodottoMatriciale(MatriceInterface m);
+  public MatriceInterface matricePerMatrice(MatriceInterface m);
 
   /**
    * Restituisce il vettore risultato moltiplicando la matrice corrente con il
@@ -61,5 +61,5 @@ public interface MatriceInterface {
    * @throws IllegalArgumentException se il vettore v è di dimensione diversa
    *                                  dalla matrice corrente
    */
-  public Vettore prodottoPerVettore(Vettore v);
+  public Vettore matricePerVettore(Vettore v);
 }

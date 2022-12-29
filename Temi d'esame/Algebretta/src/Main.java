@@ -48,30 +48,30 @@ public class Main {
           if (Parser.isVettore(left) && Parser.isVettore(right)) {
             Vettore u = new VettoreDenso(Parser.valoriVettore(left));
             Vettore v = new VettoreDenso(Parser.valoriVettore(right));
-            System.out.println(u.piu(v));
+            System.out.println(u.vettorePiuVettore(v));
           } else if (Parser.isMatrice(left) && Parser.isMatrice(right)) {
             MatriceInterface M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
             MatriceInterface N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
-            System.out.println(M.somma(N));
+            System.out.println(M.matricePiuMatrice(N));
           }
         } else { // op == '*', altrimenti partiOperazione solleva eccezione
           if (Parser.isScalare(left)) {
             int alpha = Parser.valoreScalare(left);
             if (Parser.isVettore(right)) {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));
-              System.out.println(v.per(alpha));
+              System.out.println(v.vettorePerVettore(alpha));
             } else if (Parser.isMatrice(right)) {
               MatriceInterface M = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
-              System.out.println(M.prodottoScalare(alpha));
+              System.out.println(M.matricePerScalare(alpha));
             }
           } else if (Parser.isMatrice(left)) {
             MatriceInterface M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
             if (Parser.isMatrice(right)) {
               MatriceInterface N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
-              System.out.println(M.prodottoMatriciale(N));
+              System.out.println(M.matricePerMatrice(N));
             } else if (Parser.isVettore(right)) {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));
-              System.out.println(M.prodottoPerVettore(v));
+              System.out.println(M.matricePerVettore(v));
             }
           }
         }

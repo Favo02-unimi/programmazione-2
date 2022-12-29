@@ -1,25 +1,29 @@
 public abstract class MatriceAbstract implements MatriceInterface {
+
   @Override
   public String toString() {
     final StringBuilder sb = new StringBuilder();
     sb.append("[");
     for (int i = 0; i < dim(); i++) {
-      for (int j = 0; j < dim(); j++)
+      for (int j = 0; j < dim(); j++) {
         sb.append(val(i, j) + (j < dim() - 1 ? ", " : ""));
-      if (i < dim() - 1)
+      }
+      if (i < dim() - 1) {
         sb.append("; ");
+      }
     }
     sb.append("]");
     return sb.toString();
   }
 
   @Override
-  public Vettore prodottoPerVettore(Vettore v) {
+  public Vettore matricePerVettore(Vettore v) {
     // controllo dimensione m
-    if (v.dim() != this.dim())
+    if (v.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione vettore fornito diversa da matrice attuale, fornita: " + v.dim() + " (expected: " + this.dim() +
               ")");
+    }
 
     int[] newArray = new int[this.dim()];
     for (int i = 0; i < newArray.length; i++) {
@@ -29,7 +33,7 @@ public abstract class MatriceAbstract implements MatriceInterface {
       }
       newArray[i] = val;
     }
-    
+
     return new VettoreDenso(newArray);
   }
 }

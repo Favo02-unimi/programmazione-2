@@ -13,13 +13,14 @@ public class VettoreDenso implements Vettore {
 
   @Override
   public int val(int i) {
-    if (i < 0 || i >= vettore.length)
+    if (i < 0 || i >= vettore.length) {
       throw new IllegalArgumentException("Posizione del valore da estrarre non esistente. Valore fornito: " + i);
+    }
     return vettore[i];
   }
 
   @Override
-  public Vettore per(int alpha) {
+  public Vettore vettorePerVettore(int alpha) {
     int[] newVettore = new int[vettore.length];
 
     for (int i = 0; i < vettore.length; i++) {
@@ -30,10 +31,11 @@ public class VettoreDenso implements Vettore {
   }
 
   @Override
-  public Vettore piu(Vettore v) {
-    if (v.dim() != this.dim())
+  public Vettore vettorePiuVettore(Vettore v) {
+    if (v.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Vettori non conformi. Grandezza vettore corrente: " + this.dim() + ", vettore fornito: " + v.dim());
+    }
 
     int[] newVettore = new int[vettore.length];
 
