@@ -35,8 +35,11 @@ public interface MatriceInterface {
    * 
    * @param m matrice addendo da sommare alla matrice corrente
    * @return la matrice somma tra la matrice corrente e la matrice m
-   * @throws IllegalArgumentException se la matrice m è di dimensione diversa
-   *                                  dalla matrice corrente
+   * @throws IllegalArgumentException      se la matrice m è di dimensione diversa
+   *                                       dalla matrice corrente
+   * @throws UnsupportedOperationException se la matrice m è di tipo non
+   *                                       supportato (diverso da Nulla,
+   *                                       Diagonale, Identità, Densa)
    */
   public MatriceInterface matricePiuMatrice(MatriceInterface m);
 
@@ -46,8 +49,11 @@ public interface MatriceInterface {
    * 
    * @param m matrice da moltiplicare alla matrice corrente
    * @return la matrice proddo matriciale tra la matrice corrente e la matrice m
-   * @throws IllegalArgumentException se la matrice m è di dimensione diversa
-   *                                  dalla matrice corrente
+   * @throws IllegalArgumentException      se la matrice m è di dimensione diversa
+   *                                       dalla matrice corrente
+   * @throws UnsupportedOperationException se la matrice m è di tipo non
+   *                                       supportato (diverso da Nulla,
+   *                                       Diagonale, Identità, Densa)
    */
   public MatriceInterface matricePerMatrice(MatriceInterface m);
 

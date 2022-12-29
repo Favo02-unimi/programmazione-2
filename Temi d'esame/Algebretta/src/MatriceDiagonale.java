@@ -3,7 +3,7 @@ public class MatriceDiagonale extends MatriceAbstract {
   private int[] diagonale;
 
   /**
-   * Crea una nuova matrice diagonale
+   * Costruttore che crea una nuova matrice diagonale
    * 
    * @param diagonale array di valori da mettere sulla diagonale
    * @throws IllegalArgumentException se il vettore che rappresenta la diagonale
@@ -52,11 +52,6 @@ public class MatriceDiagonale extends MatriceAbstract {
     return new MatriceDiagonale(newDiagonale);
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla, Identità,
-   *                                       Diagonale, Densa)
-   */
   @Override
   public MatriceInterface matricePiuMatrice(MatriceInterface m) {
     // controllo dimensione m
@@ -86,11 +81,6 @@ public class MatriceDiagonale extends MatriceAbstract {
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla, Identità,
-   *                                       Diagonale, Densa)
-   */
   @Override
   public MatriceInterface matricePerMatrice(MatriceInterface m) {
     // controllo dimensione m

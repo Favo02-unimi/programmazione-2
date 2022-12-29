@@ -3,7 +3,7 @@ public class MatriceIdentita extends MatriceAbstract {
   private int size;
 
   /**
-   * Crea una nuova matrice densa identità
+   * Costruttore che crea una nuova matrice densa identità
    * 
    * @param size dimensione della matrice
    * @throws IllegalArgumentException se il vettore che rappresenta la diagonale
@@ -55,11 +55,6 @@ public class MatriceIdentita extends MatriceAbstract {
     return new MatriceDiagonale(newDiagonale);
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla, Identità,
-   *                                       Diagonale, Densa)
-   */
   @Override
   public MatriceInterface matricePiuMatrice(MatriceInterface m) {
     // controllo dimensione m
@@ -89,11 +84,6 @@ public class MatriceIdentita extends MatriceAbstract {
     throw new UnsupportedOperationException("Matrice di tipo non supportato");
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla, Identità,
-   *                                       Diagonale, Densa)
-   */
   @Override
   public MatriceInterface matricePerMatrice(MatriceInterface m) {
     // controllo dimensione m

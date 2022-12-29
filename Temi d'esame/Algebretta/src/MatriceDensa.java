@@ -3,7 +3,7 @@ public class MatriceDensa extends MatriceAbstract {
   private Vettore[] matrice;
 
   /**
-   * Crea una nuova matrice densa quadrata
+   * Costrutture che crea una nuova matrice densa quadrata
    * 
    * @param matrice array di Vettori
    * @throws IllegalArgumentException se non tutti i Vettori che vengono passati
@@ -59,11 +59,6 @@ public class MatriceDensa extends MatriceAbstract {
     return new MatriceDensa(newMatrice);
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla,
-   *                                       Diagonale, Identità, Densa)
-   */
   @Override
   public MatriceInterface matricePiuMatrice(MatriceInterface m) {
     // controllo dimensione m
@@ -92,11 +87,6 @@ public class MatriceDensa extends MatriceAbstract {
     throw new UnsupportedOperationException("Tipo di matrice non supportato");
   }
 
-  /**
-   * @throws UnsupportedOperationException se la matrice m è di tipo non
-   *                                       supportato (diverso da Nulla,
-   *                                       Diagonale, Identità, Densa)
-   */
   @Override
   public MatriceInterface matricePerMatrice(MatriceInterface m) {
     // controllo dimensione m
