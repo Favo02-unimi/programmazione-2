@@ -117,7 +117,7 @@ public class MatriceDensa extends MatriceAbstract {
       for (int row = 0; row < newMatrice.length; row++) {
         for (int i = 0; i < newMatrice.length; i++) {
           for (int j1 = 0, j2 = 0; j1 < newMatrice.length; j1++, j2++) {
-            newMatrice[i][row] += (this.val(row, j1) * m.val(j2, i));
+            newMatrice[row][i] += (this.val(row, j1) * m.val(j2, i));
           }
         }
       }
