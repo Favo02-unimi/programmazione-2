@@ -2,6 +2,16 @@ public class MatriceDensa extends MatriceAbstract {
 
   private Vettore[] matrice;
 
+  /*
+   * AF: Ogni riga della matrice è rappresentata da un Vettore. L'array di questi
+   * vettori costituisce la matrice completa.
+   */
+
+  /*
+   * RI: matrice != null, ogni vettore di matrice != null, ogni vettore.dim() ==
+   * matrice.length
+   */
+
   /**
    * Costrutture che crea una nuova matrice densa quadrata
    * 
@@ -87,7 +97,7 @@ public class MatriceDensa extends MatriceAbstract {
     if (m instanceof MatriceDiagonale || m instanceof MatriceIdentita) {
       int[] diagonale = new int[this.dim()];
       for (int i = 0; i < this.dim(); i++) {
-        diagonale[i] = this.val(i,i) * m.val(i, i);
+        diagonale[i] = this.val(i, i) * m.val(i, i);
       }
 
       return new MatriceDiagonale(diagonale);

@@ -2,6 +2,15 @@ public class MatriceIdentita extends MatriceAbstract {
 
   private int size;
 
+  /*
+   * AF: La lunghezza della diagonale della matrice è rappresentata da "size".
+   * Ogni elemento della diagonale è 1, tutti gli altri 0.
+   */
+
+  /*
+   * RI: size > 0
+   */
+
   /**
    * Costruttore che crea una nuova matrice densa identità
    * 

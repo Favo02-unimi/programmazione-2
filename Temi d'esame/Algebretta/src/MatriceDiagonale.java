@@ -2,6 +2,15 @@ public class MatriceDiagonale extends MatriceAbstract {
 
   private int[] diagonale;
 
+  /*
+   * AF: La diagonale della matrice è rappresentata dall'array "diagonale", tutti
+   * gli altri elementi della matrice sono 0
+   */
+
+  /*
+   * RI: diagonale != null
+   */
+
   /**
    * Costruttore che crea una nuova matrice diagonale
    * 

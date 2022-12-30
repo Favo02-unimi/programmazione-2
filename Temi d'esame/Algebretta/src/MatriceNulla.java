@@ -2,6 +2,14 @@ public class MatriceNulla extends MatriceAbstract {
 
   private int size;
 
+  /*
+   * AF: La matrice di dimenensione "size" contiene solo elementi 0.
+   */
+
+  /*
+   * RI: size > 0
+   */
+
   /**
    * Crea una nuova matrice densa nulla
    * 
