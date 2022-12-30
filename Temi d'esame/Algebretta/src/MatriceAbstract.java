@@ -1,17 +1,36 @@
 public abstract class MatriceAbstract implements Matrice {
 
+  /**
+   * Controlla che la matrice fornita non sia null
+   * 
+   * @param m matrice fornita
+   * @throws IllegalArgumentException se la matrice m è null
+   */
   void controlloNull(Matrice m) {
     if (m == null) {
       throw new IllegalArgumentException("Matrice fornita null");
     }
   }
 
+  /**
+   * Controlla che il vettore fornito non sia null
+   * 
+   * @param v vettore fornito
+   * @throws IllegalArgumentException se il vettore v è null
+   */
   void controlloNull(Vettore v) {
     if (v == null) {
       throw new IllegalArgumentException("Vettore fornito null");
     }
   }
 
+  /**
+   * Controlla che la dimensioni della matrice corrente siano uguali a quelle
+   * della matrice fornita m
+   * 
+   * @param m matrice fornita
+   * @throws IllegalArgumentException se le dimensioni sono diverse
+   */
   void controlloDimensione(Matrice m) {
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
@@ -20,6 +39,13 @@ public abstract class MatriceAbstract implements Matrice {
     }
   }
 
+  /**
+   * Controlla che la dimensioni della matrice corrente siano uguali a quelle
+   * del vettore fornito v
+   * 
+   * @param v vettore fornito
+   * @throws IllegalArgumentException se le dimensioni sono diverse
+   */
   void controlloDimensione(Vettore v) {
     if (v.dim() != this.dim()) {
       throw new IllegalArgumentException(
@@ -28,6 +54,16 @@ public abstract class MatriceAbstract implements Matrice {
     }
   }
 
+  /**
+   * Controlla che gli indici i, j siano validi per la matrice correntes
+   * 
+   * @param i indice delle righe fornito
+   * @param j indice della posizione (colonna) fornito
+   * @throws IllegalArgumentException se i è fuori dai bounds della matrice
+   *                                  corrente
+   * @throws IllegalArgumentException se j è fuori dai bounds della matrice
+   *                                  corrente
+   */
   void controlloIndici(int i, int j) {
     if (i < 0 || i >= this.dim()) {
       throw new IllegalArgumentException("Riga non valida, fornita: " + i + " dimensione matrice: " + this.dim());
