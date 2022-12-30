@@ -2,7 +2,17 @@ public class VettoreDenso extends VettoreAbstract {
 
   private int[] vettore;
 
+  /**
+   * Costruttore che crea un nuovo vettore denso
+   * 
+   * @param vettore elementi del vettore
+   * @throws IllegalArgumentException se l'array di elementi fornito è di dimensione nulla o negativa
+   */
   public VettoreDenso(int[] vettore) {
+    if (vettore.length <= 0) {
+      throw new IllegalArgumentException("Dimensione del vettore fornito non valida, fornita: " + vettore.length);
+    }
+
     this.vettore = vettore;
   }
 
@@ -14,7 +24,7 @@ public class VettoreDenso extends VettoreAbstract {
   @Override
   public int val(int i) {
     controlloIndici(i);
-    
+
     return vettore[i];
   }
 
