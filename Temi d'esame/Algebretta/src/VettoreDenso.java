@@ -2,11 +2,20 @@ public class VettoreDenso extends VettoreAbstract {
 
   private int[] vettore;
 
+  /*
+   * AF: Il vettore è rappresentato da un array di elementi.
+   */
+
+  /*
+   * RI: vettore.length > 0
+   */
+
   /**
    * Costruttore che crea un nuovo vettore denso
    * 
    * @param vettore elementi del vettore
-   * @throws IllegalArgumentException se l'array di elementi fornito è di dimensione nulla o negativa
+   * @throws IllegalArgumentException se l'array di elementi fornito è di
+   *                                  dimensione nulla o negativa
    */
   public VettoreDenso(int[] vettore) {
     if (vettore.length <= 0) {
