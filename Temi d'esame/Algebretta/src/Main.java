@@ -59,7 +59,7 @@ public class Main {
             int alpha = Parser.valoreScalare(left);
             if (Parser.isVettore(right)) {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));
-              System.out.println(v.vettorePerVettore(alpha));
+              System.out.println(v.vettorePerScalare(alpha));
             } else if (Parser.isMatrice(right)) {
               Matrice M = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
               System.out.println(M.matricePerScalare(alpha));

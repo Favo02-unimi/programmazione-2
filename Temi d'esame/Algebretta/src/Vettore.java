@@ -23,7 +23,7 @@ public interface Vettore {
    * @param alpha scalare per cui moltiplicare il vettore
    * @return il vettore prodotto del vettore corrente per la scalare alpha
    */
-  public Vettore vettorePerVettore(final int alpha);
+  public Vettore vettorePerScalare(final int alpha);
 
   /**
    * Restituisce il vettore somma tra il vettore corrente e il vettore v, se i due
