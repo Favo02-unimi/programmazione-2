@@ -28,6 +28,16 @@ public abstract class MatriceAbstract implements Matrice {
     }
   }
 
+  void controlloIndici(int i, int j) {
+    if (i < 0 || i >= this.dim()) {
+      throw new IllegalArgumentException("Riga non valida, fornita: " + i + " dimensione matrice: " + this.dim());
+    }
+    if (j < 0 || j >= this.dim()) {
+      throw new IllegalArgumentException(
+          "Posizione non valida, fornita: " + j + " dimensione riga matrice: " + this.dim());
+    }
+  }
+
   @Override
   public Vettore matricePerVettore(Vettore v) {
     controlloNull(v);

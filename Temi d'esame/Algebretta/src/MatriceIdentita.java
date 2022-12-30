@@ -24,15 +24,7 @@ public class MatriceIdentita extends MatriceAbstract {
 
   @Override
   public int val(int row, int i) {
-    // controllo bounds row
-    if (row < 0 || row >= this.dim()) {
-      throw new IllegalArgumentException("Riga non valida, fornita: " + row + " dimensione matrice: " + this.dim());
-    }
-    // controllo bounds i
-    if (i < 0 || i >= this.dim()) {
-      throw new IllegalArgumentException(
-          "Posizione non valida, fornita: " + i + " dimensione riga matrice: " + this.dim());
-    }
+    controlloIndici(row, i);
 
     if (row == i) {
       return 1;
