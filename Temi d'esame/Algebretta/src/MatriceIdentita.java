@@ -42,7 +42,7 @@ public class MatriceIdentita extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerScalare(int alpha) {
+  public Matrice matricePerScalare(int alpha) {
     if (alpha == 0) {
       return new MatriceNulla(this.dim());
     }
@@ -56,7 +56,7 @@ public class MatriceIdentita extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePiuMatrice(MatriceInterface m) {
+  public Matrice matricePiuMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
@@ -85,7 +85,7 @@ public class MatriceIdentita extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerMatrice(MatriceInterface m) {
+  public Matrice matricePerMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(

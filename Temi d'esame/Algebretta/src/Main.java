@@ -24,7 +24,7 @@ import java.util.Scanner;
 
 public class Main {
 
-  public static MatriceInterface valueOf(final char tipo, final int[][] arr) {
+  public static Matrice valueOf(final char tipo, final int[][] arr) {
     switch (tipo) {
       case ' ':
         return new MatriceDensa(arr);
@@ -50,8 +50,8 @@ public class Main {
             Vettore v = new VettoreDenso(Parser.valoriVettore(right));
             System.out.println(u.vettorePiuVettore(v));
           } else if (Parser.isMatrice(left) && Parser.isMatrice(right)) {
-            MatriceInterface M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
-            MatriceInterface N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
+            Matrice M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
+            Matrice N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
             System.out.println(M.matricePiuMatrice(N));
           }
         } else { // op == '*', altrimenti partiOperazione solleva eccezione
@@ -61,13 +61,13 @@ public class Main {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));
               System.out.println(v.vettorePerVettore(alpha));
             } else if (Parser.isMatrice(right)) {
-              MatriceInterface M = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
+              Matrice M = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
               System.out.println(M.matricePerScalare(alpha));
             }
           } else if (Parser.isMatrice(left)) {
-            MatriceInterface M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
+            Matrice M = valueOf(Parser.tipoMatrice(left), Parser.valoriMatrice(left));
             if (Parser.isMatrice(right)) {
-              MatriceInterface N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
+              Matrice N = valueOf(Parser.tipoMatrice(right), Parser.valoriMatrice(right));
               System.out.println(M.matricePerMatrice(N));
             } else if (Parser.isVettore(right)) {
               Vettore v = new VettoreDenso(Parser.valoriVettore(right));

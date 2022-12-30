@@ -48,7 +48,7 @@ public class MatriceDensa extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerScalare(int alpha) {
+  public Matrice matricePerScalare(int alpha) {
     int[][] newMatrice = new int[this.dim()][this.dim()];
     for (int row = 0; row < this.dim(); row++) {
       for (int i = 0; i < this.dim(); i++) {
@@ -60,7 +60,7 @@ public class MatriceDensa extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePiuMatrice(MatriceInterface m) {
+  public Matrice matricePiuMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
@@ -88,7 +88,7 @@ public class MatriceDensa extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerMatrice(MatriceInterface m) {
+  public Matrice matricePerMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(

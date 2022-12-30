@@ -43,7 +43,7 @@ public class MatriceDiagonale extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerScalare(int alpha) {
+  public Matrice matricePerScalare(int alpha) {
     int[] newDiagonale = new int[this.dim()];
     for (int i = 0; i < this.dim(); i++) {
       newDiagonale[i] = this.val(i, i) * alpha;
@@ -53,7 +53,7 @@ public class MatriceDiagonale extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePiuMatrice(MatriceInterface m) {
+  public Matrice matricePiuMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(
@@ -82,7 +82,7 @@ public class MatriceDiagonale extends MatriceAbstract {
   }
 
   @Override
-  public MatriceInterface matricePerMatrice(MatriceInterface m) {
+  public Matrice matricePerMatrice(Matrice m) {
     // controllo dimensione m
     if (m.dim() != this.dim()) {
       throw new IllegalArgumentException(

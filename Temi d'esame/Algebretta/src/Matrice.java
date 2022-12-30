@@ -1,4 +1,4 @@
-public interface MatriceInterface {
+public interface Matrice {
 
   /**
    * Restisuice la dimensione della matrice
@@ -27,7 +27,7 @@ public interface MatriceInterface {
    * @return la matrice prodotto scalare tra la matrice corrente e la scalare
    *         alpha
    */
-  public MatriceInterface matricePerScalare(int alpha);
+  public Matrice matricePerScalare(int alpha);
 
   /**
    * Restituisce la matrice somma tra la matrice corrente e la matrice m, se le
@@ -41,7 +41,7 @@ public interface MatriceInterface {
    *                                       supportato (diverso da Nulla,
    *                                       Diagonale, Identità, Densa)
    */
-  public MatriceInterface matricePiuMatrice(MatriceInterface m);
+  public Matrice matricePiuMatrice(Matrice m);
 
   /**
    * Restituisce la matrice proddo matriciale tra la matrice corrente e la matrice
@@ -55,7 +55,7 @@ public interface MatriceInterface {
    *                                       supportato (diverso da Nulla,
    *                                       Diagonale, Identità, Densa)
    */
-  public MatriceInterface matricePerMatrice(MatriceInterface m);
+  public Matrice matricePerMatrice(Matrice m);
 
   /**
    * Restituisce il vettore risultato moltiplicando la matrice corrente con il
