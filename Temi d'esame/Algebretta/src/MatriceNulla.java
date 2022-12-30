@@ -43,24 +43,16 @@ public class MatriceNulla extends MatriceAbstract {
 
   @Override
   public Matrice matricePiuMatrice(Matrice m) {
-    // controllo dimensione m
-    if (m.dim() != this.dim()) {
-      throw new IllegalArgumentException(
-          "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
-              ")");
-    }
+    controlloNull(m);
+    controlloDimensione(m);
 
     return m;
   }
 
   @Override
   public Matrice matricePerMatrice(Matrice m) {
-    // controllo dimensione m
-    if (m.dim() != this.dim()) {
-      throw new IllegalArgumentException(
-          "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
-              ")");
-    }
+    controlloNull(m);
+    controlloDimensione(m);
 
     return this;
   }

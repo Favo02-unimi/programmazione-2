@@ -61,12 +61,8 @@ public class MatriceDensa extends MatriceAbstract {
 
   @Override
   public Matrice matricePiuMatrice(Matrice m) {
-    // controllo dimensione m
-    if (m.dim() != this.dim()) {
-      throw new IllegalArgumentException(
-          "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
-              ")");
-    }
+    controlloNull(m);
+    controlloDimensione(m);
 
     if (m instanceof MatriceNulla) {
       return new MatriceNulla(this.dim());
@@ -89,12 +85,8 @@ public class MatriceDensa extends MatriceAbstract {
 
   @Override
   public Matrice matricePerMatrice(Matrice m) {
-    // controllo dimensione m
-    if (m.dim() != this.dim()) {
-      throw new IllegalArgumentException(
-          "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
-              ")");
-    }
+    controlloNull(m);
+    controlloDimensione(m);
 
     if (m instanceof MatriceNulla) {
       return new MatriceNulla(this.dim());

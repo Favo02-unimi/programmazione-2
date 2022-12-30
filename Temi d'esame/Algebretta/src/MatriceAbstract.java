@@ -1,13 +1,37 @@
 public abstract class MatriceAbstract implements Matrice {
 
-  @Override
-  public Vettore matricePerVettore(Vettore v) {
-    // controllo dimensione m
+  void controlloNull(Matrice m) {
+    if (m == null) {
+      throw new IllegalArgumentException("Matrice fornita null");
+    }
+  }
+
+  void controlloNull(Vettore v) {
+    if (v == null) {
+      throw new IllegalArgumentException("Vettore fornito null");
+    }
+  }
+
+  void controlloDimensione(Matrice m) {
+    if (m.dim() != this.dim()) {
+      throw new IllegalArgumentException(
+          "Dimensione matrice fornita diversa da matrice attuale, fornita: " + m.dim() + " (expected: " + this.dim() +
+              ")");
+    }
+  }
+
+  void controlloDimensione(Vettore v) {
     if (v.dim() != this.dim()) {
       throw new IllegalArgumentException(
           "Dimensione vettore fornito diversa da matrice attuale, fornita: " + v.dim() + " (expected: " + this.dim() +
               ")");
     }
+  }
+
+  @Override
+  public Vettore matricePerVettore(Vettore v) {
+    controlloNull(v);
+    controlloDimensione(v);
 
     int[] newArray = new int[this.dim()];
     for (int i = 0; i < newArray.length; i++) {
