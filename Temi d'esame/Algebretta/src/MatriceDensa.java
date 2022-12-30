@@ -16,11 +16,17 @@ public class MatriceDensa extends MatriceAbstract {
    * Costrutture che crea una nuova matrice densa quadrata
    * 
    * @param matrice array di Vettori
-   * @throws IllegalArgumentException se non tutti i Vettori che vengono passati
-   *                                  sono della stessa dimensione della matrice
+   * @throws IllegalArgumentException se almeno uno tra gli array di valori
+   *                                  passati ha dimensione nulla o negativa
+   * @throws IllegalArgumentException se il numero di array è diverso dal numero
+   *                                  di elementi di ogni array
    */
   public MatriceDensa(int[][] matrice) {
-    // controllo matrice quadrata
+    if (matrice.length <= 0) {
+      throw new IllegalArgumentException(
+          "Dimensione dell'array di array fornito non valida, fornita: " + matrice.length);
+    }
+
     for (int i = 0; i < matrice.length; i++) {
       if (matrice[i].length != matrice.length) {
         throw new IllegalArgumentException("La matrice non è quadrata, il vettore in riga " + i + " ha dimensione "
