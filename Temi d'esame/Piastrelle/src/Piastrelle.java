@@ -11,7 +11,7 @@ public class Piastrelle implements PavimentazioneInt {
   public void addPiastrelle(Piastrella piastrella, int quantity) {
     if (quantity <= 0) throw new IllegalArgumentException("Non è possibile aggiungere una quantità negativa, quantità fornita: " + quantity);
 
-    piastrelle.put(piastrella, piastrelle.get(piastrella) + quantity);
+    piastrelle.put(piastrella, piastrelle.get(piastrella) == null ? quantity : piastrelle.get(piastrella) + quantity);
   }
 
   @Override

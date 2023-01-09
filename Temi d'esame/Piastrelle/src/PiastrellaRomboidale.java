@@ -7,7 +7,7 @@ public class PiastrellaRomboidale extends PiastrellaAbs {
   
     if (diagonale1 <= 0 || diagonale2 <= 0) throw new IllegalArgumentException("Le due diagonali della piastrella romboidale non possono essere negative o nulle, fornite: " + diagonale1 + " " + diagonale2);
 
-    this.superficie = diagonale1 * diagonale2;
+    this.superficie = (diagonale1 * diagonale2) / 2;
 
     assert repOk();
   }

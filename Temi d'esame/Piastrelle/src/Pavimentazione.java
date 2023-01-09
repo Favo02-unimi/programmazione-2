@@ -1,11 +1,13 @@
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Pavimentazione implements PavimentazioneInt {
 
-  private HashSet<PavimentazioneInt> pavimentazioni;
+  private List<PavimentazioneInt> pavimentazioni;
 
   public Pavimentazione() {
-    pavimentazioni = new HashSet<>();
+    pavimentazioni = new ArrayList<>();
   }
 
   public void addPavimentazione(PavimentazioneInt pavimentazione) {
@@ -16,7 +18,7 @@ public class Pavimentazione implements PavimentazioneInt {
   public int getCostoTot() {
     int costoTot = 0;
     for (PavimentazioneInt p : pavimentazioni) {
-      costoTot = p.getCostoTot();
+      costoTot += p.getCostoTot();
     }
     
     return costoTot;
@@ -26,7 +28,7 @@ public class Pavimentazione implements PavimentazioneInt {
   public int getSuperficieTot() {
     int supTot = 0;
     for (PavimentazioneInt p : pavimentazioni) {
-      supTot = p.getSuperficieTot();
+      supTot += p.getSuperficieTot();
     }
     
     return supTot;
