@@ -24,7 +24,7 @@ public class Test {
         while (in.hasNextInt()) {
           int qty = in.nextInt();
           int index = in.nextInt();
-          p.addPavimentazione(piastrellature.get(index), qty);
+          p.addPiastrellabile(piastrellature.get(index), qty);
         }
         piastrellature.add(p);
         break;

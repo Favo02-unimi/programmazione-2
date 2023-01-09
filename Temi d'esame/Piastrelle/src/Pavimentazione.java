@@ -1,20 +1,40 @@
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * Classe mutabile che rappresenta un insieme di piastrelle e pavimentazioni
+ */
 public class Pavimentazione implements Piastrellabile {
 
+  /**
+   * Ogni piastrella o pavimentazione è presente in una certa quantità nella pavimentazione
+   */
   private Map<Piastrellabile, Integer> pavimentazioni;
 
+  /**
+   * Crea una nuova pavimentazione
+   */
   public Pavimentazione() {
     pavimentazioni = new HashMap<>();
   }
 
-  public void addPavimentazione(Piastrellabile pavimentazione) {
-    pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? 1 : pavimentazioni.get(pavimentazione) + 1);
+  /**
+   * Aggiunge un istanza Piastrellabile in quantità 1 alla pavimentazione
+   * 
+   * @param piastrellabile istanza da aggiungere a pavimentazione
+   */
+  public void addPiastrellabile(Piastrellabile piastrellabile) {
+    pavimentazioni.put(piastrellabile, pavimentazioni.get(piastrellabile) == null ? 1 : pavimentazioni.get(piastrellabile) + 1);
   }
 
-  public void addPavimentazione(Piastrellabile pavimentazione, int qty) {
-    pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? qty : pavimentazioni.get(pavimentazione) + qty);
+  /**
+   * Aggiunge delle istanze Piastrellabili in quantità qty alla pavimentazione
+   * 
+   * @param piastrellabile istanza da aggiungere a pavimentazione
+   * @param qty quantità di istanze piastrellabile da aggiungere a pavimentazione
+   */
+  public void addPiastrellabile(Piastrellabile piastrellabile, int qty) {
+    pavimentazioni.put(piastrellabile, pavimentazioni.get(piastrellabile) == null ? qty : pavimentazioni.get(piastrellabile) + qty);
   }
 
   @Override
