@@ -1,34 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Map;
+import java.util.HashMap;
 
 public class Pavimentazione implements PavimentazioneInt {
 
-  private List<PavimentazioneInt> pavimentazioni;
+  private Map<PavimentazioneInt, Integer> pavimentazioni;
 
   public Pavimentazione() {
-    pavimentazioni = new ArrayList<>();
+    pavimentazioni = new HashMap<>();
   }
 
   public void addPavimentazione(PavimentazioneInt pavimentazione) {
-    pavimentazioni.add(pavimentazione);
+    pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? 1 : pavimentazioni.get(pavimentazione) + 1);
+  }
+
+  public void addPavimentazione(PavimentazioneInt pavimentazione, int qty) {
+    pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? qty : pavimentazioni.get(pavimentazione) + qty);
   }
 
   @Override
-  public int getCostoTot() {
+  public int getCosto() {
     int costoTot = 0;
-    for (PavimentazioneInt p : pavimentazioni) {
-      costoTot += p.getCostoTot();
+    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+      costoTot += (p.getCosto() * pavimentazioni.get(p));
     }
     
     return costoTot;
   }
 
   @Override
-  public int getSuperficieTot() {
+  public int getSuperficie() {
     int supTot = 0;
-    for (PavimentazioneInt p : pavimentazioni) {
-      supTot += p.getSuperficieTot();
+    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+      supTot += (p.getSuperficie() * pavimentazioni.get(p));
     }
     
     return supTot;
@@ -38,11 +41,11 @@ public class Pavimentazione implements PavimentazioneInt {
   public String toString() {
     StringBuilder s = new StringBuilder();
     s.append("Pavimentazione:\n");
-    for (PavimentazioneInt p : pavimentazioni) {
-      s.append("\t" + p.getClass() + ": costo " + p.getCostoTot() + " superficie " + p.getSuperficieTot());
+    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+      s.append("\t" + p.getClass() + ": costo " + p.getCosto() + " superficie " + p.getSuperficie());
       s.append("\n");
     }
-    s.append("Totale: costo " + this.getCostoTot() + " superficie " + this.getSuperficieTot());
+    s.append("Totale: costo " + this.getCosto() + " superficie " + this.getSuperficie());
     return s.toString();
   }
   

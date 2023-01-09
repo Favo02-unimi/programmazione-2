@@ -1,7 +1,7 @@
 public interface PavimentazioneInt {
 
-  public int getCostoTot();
+  public int getCosto();
 
-  public int getSuperficieTot();
+  public int getSuperficie();
 
 }
