@@ -33,5 +33,18 @@ public class Pavimentazione implements PavimentazioneInt {
     
     return supTot;
   }
+
+  @Override
+  public String toString() {
+    StringBuilder s = new StringBuilder();
+    s.append("Pavimentazione:\n");
+    for (PavimentazioneInt p : pavimentazioni) {
+      s.append("\t" + p.getClass() + ": costo " + p.getCostoTot() + " superficie " + p.getSuperficieTot());
+      s.append("\n");
+    }
+    s.append("Totale: costo " + this.getCostoTot() + " superficie " + this.getSuperficieTot());
+    return s.toString();
+  }
+  
   
 }
