@@ -1,4 +1,4 @@
-public abstract class PiastrellaAbs implements PavimentazioneInt {
+public abstract class PiastrellaAbs implements Piastrellabile {
   
   private int costo;
 

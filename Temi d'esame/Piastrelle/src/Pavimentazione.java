@@ -1,26 +1,26 @@
 import java.util.Map;
 import java.util.HashMap;
 
-public class Pavimentazione implements PavimentazioneInt {
+public class Pavimentazione implements Piastrellabile {
 
-  private Map<PavimentazioneInt, Integer> pavimentazioni;
+  private Map<Piastrellabile, Integer> pavimentazioni;
 
   public Pavimentazione() {
     pavimentazioni = new HashMap<>();
   }
 
-  public void addPavimentazione(PavimentazioneInt pavimentazione) {
+  public void addPavimentazione(Piastrellabile pavimentazione) {
     pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? 1 : pavimentazioni.get(pavimentazione) + 1);
   }
 
-  public void addPavimentazione(PavimentazioneInt pavimentazione, int qty) {
+  public void addPavimentazione(Piastrellabile pavimentazione, int qty) {
     pavimentazioni.put(pavimentazione, pavimentazioni.get(pavimentazione) == null ? qty : pavimentazioni.get(pavimentazione) + qty);
   }
 
   @Override
   public int getCosto() {
     int costoTot = 0;
-    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+    for (Piastrellabile p : pavimentazioni.keySet()) {
       costoTot += (p.getCosto() * pavimentazioni.get(p));
     }
     
@@ -30,7 +30,7 @@ public class Pavimentazione implements PavimentazioneInt {
   @Override
   public int getSuperficie() {
     int supTot = 0;
-    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+    for (Piastrellabile p : pavimentazioni.keySet()) {
       supTot += (p.getSuperficie() * pavimentazioni.get(p));
     }
     
@@ -41,7 +41,7 @@ public class Pavimentazione implements PavimentazioneInt {
   public String toString() {
     StringBuilder s = new StringBuilder();
     s.append("Pavimentazione:\n");
-    for (PavimentazioneInt p : pavimentazioni.keySet()) {
+    for (Piastrellabile p : pavimentazioni.keySet()) {
       s.append("\t" + p.getClass() + ": costo " + p.getCosto() + " superficie " + p.getSuperficie() + " quantità " + pavimentazioni.get(p));
       s.append("\n");
     }

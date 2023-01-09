@@ -1,4 +1,4 @@
-public interface PavimentazioneInt {
+public interface Piastrellabile {
 
   public int getCosto();
 
