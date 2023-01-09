@@ -48,6 +48,13 @@ public class Pavimentazione implements Piastrellabile {
     s.append("Totale: costo " + this.getCosto() + " superficie " + this.getSuperficie());
     return s.toString();
   }
-  
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((pavimentazioni == null) ? 0 : pavimentazioni.hashCode());
+    return result;
+  }  
   
 }
