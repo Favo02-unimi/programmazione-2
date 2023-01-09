@@ -1,41 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Test {
   public static void main(String[] args) {
-    Piastrella piastrella;
-    Piastrelle piastrelle;
+    Scanner in = new Scanner(System.in);
 
-    piastrella = new PiastrellaQuadrata(2, 3);
-    piastrelle = new Piastrelle();
-    piastrelle.addPiastrelle(piastrella, 42);
+    List<PavimentazioneInt> pav = new ArrayList<>();
 
-    Pavimentazione pavCucina = new Pavimentazione();
-    pavCucina.addPavimentazione(piastrelle);
+    while (in.hasNext()) {
 
+      String sw = in.next();
 
-    piastrella = new PiastrellaRomboidale(4, 2, 5);
-    piastrelle = new Piastrelle();
-    piastrelle.addPiastrelle(piastrella, 65);
-
-    Pavimentazione pavBagno = new Pavimentazione();
-    pavBagno.addPavimentazione(piastrelle);
-
-
-    Pavimentazione pavCasa = new Pavimentazione();
-
-    pavCasa.addPavimentazione(pavCucina);
-    System.out.println("cucina " + pavCucina);
-    System.out.println("casa " + pavCasa);
-    System.out.println();
-
-    pavCasa.addPavimentazione(pavBagno);
-    System.out.println("bagno " + pavBagno);
-    System.out.println("casa " + pavCasa);
-    System.out.println();
-
-    pavCasa.addPavimentazione(pavBagno);
-    System.out.println("bagno " + pavBagno);
-    System.out.println("casa " + pavCasa);
-    System.out.println();
-    
-    System.out.println(pavCasa);
+      switch (sw) {
+      case "Q":
+        pav.add(new PiastrellaQuadrata(in.nextInt(), in.nextInt()));
+        break;
+      case "R":
+        pav.add(new PiastrellaRomboidale(in.nextInt(), in.nextInt(), in.nextInt()));
+        break;
+      case "T":
+        pav.add(new PiastrellaTriangolare(in.nextInt(), in.nextInt(), in.nextInt()));
+        break;
+      case "P":
+      Pavimentazione p = new Pavimentazione();
+        while (in.hasNextInt()) {
+          int qty = in.nextInt();
+          int index = in.nextInt();
+          p.addPavimentazione(pav.get(index), qty);
+          pav.add(p);
+        }
+        break;
+      }
+    }
+    System.out.println(pav.get(4));
   }
+
 }
