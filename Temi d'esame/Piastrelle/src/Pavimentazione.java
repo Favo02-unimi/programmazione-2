@@ -42,7 +42,7 @@ public class Pavimentazione implements PavimentazioneInt {
     StringBuilder s = new StringBuilder();
     s.append("Pavimentazione:\n");
     for (PavimentazioneInt p : pavimentazioni.keySet()) {
-      s.append("\t" + p.getClass() + ": costo " + p.getCosto() + " superficie " + p.getSuperficie());
+      s.append("\t" + p.getClass() + ": costo " + p.getCosto() + " superficie " + p.getSuperficie() + " quantità " + pavimentazioni.get(p));
       s.append("\n");
     }
     s.append("Totale: costo " + this.getCosto() + " superficie " + this.getSuperficie());

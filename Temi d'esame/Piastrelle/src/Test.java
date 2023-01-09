@@ -9,10 +9,7 @@ public class Test {
     List<PavimentazioneInt> pav = new ArrayList<>();
 
     while (in.hasNext()) {
-
-      String sw = in.next();
-
-      switch (sw) {
+      switch (in.next()) {
       case "Q":
         pav.add(new PiastrellaQuadrata(in.nextInt(), in.nextInt()));
         break;
@@ -23,17 +20,23 @@ public class Test {
         pav.add(new PiastrellaTriangolare(in.nextInt(), in.nextInt(), in.nextInt()));
         break;
       case "P":
-      Pavimentazione p = new Pavimentazione();
+        Pavimentazione p = new Pavimentazione();
         while (in.hasNextInt()) {
           int qty = in.nextInt();
           int index = in.nextInt();
           p.addPavimentazione(pav.get(index), qty);
-          pav.add(p);
         }
+        pav.add(p);
         break;
       }
     }
-    System.out.println(pav.get(4));
+    
+    for (PavimentazioneInt p : pav) {
+      if (p instanceof Pavimentazione) {
+        System.out.println(p.getSuperficie() + "\t" + p.getCosto());
+      }
+    }
+
   }
 
 }
