@@ -19,4 +19,12 @@ public abstract class PiastrellaAbs implements Piastrellabile {
     return costo;
   }
 
+  @Override
+  public String toString() {
+    StringBuilder s = new StringBuilder();
+    s.append("Piastrella: " + this.getClass() + ":");
+    s.append("\tCosto " + this.getCosto() + " superficie " + this.getSuperficie());
+    return s.toString();
+  }
+
 }
