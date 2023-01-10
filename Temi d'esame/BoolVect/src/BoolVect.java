@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**
  * Interfaccia per vettori di valori booleani
  */
@@ -59,4 +61,10 @@ public interface BoolVect {
    */
   public BoolVect xor(BoolVect val);
 
+  /**
+   * Restituisce l'iteratore per scorrere gli indici dei valori true
+   * 
+   * @return l'oggetto iterator per scorrere gli indici dei valori true
+   */
+  public Iterator<Integer> iterator();
 }
