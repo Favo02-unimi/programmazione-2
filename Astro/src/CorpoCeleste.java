@@ -45,6 +45,7 @@ public abstract class CorpoCeleste {
    * Modifica la velocità del corpo celeste corrente in alla vicinanza ad un corpo celeste
    * 
    * @param c corpo celeste che influenza la velocità del corpo celeste corrente. c non viene modificato
+   * @throws NullPointerException se c è null
    */
   public abstract void modificaVelocita(final CorpoCeleste c);
 
