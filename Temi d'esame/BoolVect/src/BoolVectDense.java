@@ -1,10 +1,11 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Classe che implementa un BoolVectDenso, in cui i valori veri sono nello stesso ordine di quelli falsi
+ * Classe che implementa un BoolVectDenso, in cui il numero di valori veri è dello stesso ordine di quelli falsi
  */
-public class BoolVectDense implements BoolVect {
+public class BoolVectDense implements BoolVect, Iterable<Integer> {
 
   /**
    * Lista che contiene i valori booleani del BoolVect
@@ -118,10 +119,44 @@ public class BoolVectDense implements BoolVect {
   @Override
   public String toString() {
     StringBuilder s = new StringBuilder();
-    for (int i = 0; i < this.dim(); i++) {
-      s.append(this.get(i) == false ? "F" : "V");
+
+    Iterator<Integer> iter = this.iterator();
+    int index = 0;
+    while (iter.hasNext()) {
+      int nextTrue = iter.next();
+      for (int i = index; i < nextTrue; i++) {
+        s.append("F");
+      }
+      s.append("V");
     }
     return s.toString();
+  }
+
+  @Override
+  public Iterator<Integer> iterator() {
+    Iterator<Integer> iter = new Iterator<>() {
+
+      private int currentIndex = 0;
+
+      @Override
+      public boolean hasNext() {
+        return currentIndex < dim()-1;
+      }
+
+      @Override
+      public Integer next() {
+        for (int i = currentIndex; i < dim()-1; i++) {
+          if (values.get(i)) {
+            currentIndex = i+1;
+            return i;
+          }
+        }
+        currentIndex = dim()-1;
+        return dim()-1;
+      }
+      
+    };
+    return iter;
   }
   
 }
