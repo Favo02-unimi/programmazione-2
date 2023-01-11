@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -91,7 +92,7 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
 
   @Override
   public Iterator<Brano> iterator() {
-    return brani.iterator();
+    return Collections.unmodifiableCollection(brani).iterator();
   }
 
   /**
@@ -115,7 +116,7 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
       }
     }
 
-    return braniAlbum.iterator();
+    return Collections.unmodifiableCollection(braniAlbum).iterator();
   }
 
   /**
@@ -131,7 +132,7 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
       albums.add(iter.next().album());
     }
 
-    return albums.iterator();
+    return Collections.unmodifiableCollection(albums).iterator();
   }
 
 }

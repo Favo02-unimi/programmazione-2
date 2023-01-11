@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -124,6 +127,10 @@ public class Album implements Ascoltabile, Iterable<Brano> {
         return new Brano(Album.this, curIndex++);
       }
 
+      @Override
+      public void remove() {
+        throw new UnsupportedOperationException("Non è possibile rimuovere da un album");
+      }
     };
   }
 
