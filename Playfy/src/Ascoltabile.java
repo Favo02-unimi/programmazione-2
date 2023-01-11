@@ -8,13 +8,13 @@ public interface Ascoltabile {
    * 
    * @return il nome dell'audio ascoltabile
    */
-  public String getNome();
+  public String nome();
 
   /**
    * Restituisce la durata totale dell'audio ascoltabile
    * 
    * @return la durata totale dell'audio ascoltabile
    */
-  public int getDurata();
+  public int durata();
 
 }
