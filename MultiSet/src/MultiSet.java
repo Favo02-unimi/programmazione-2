@@ -92,14 +92,14 @@ public interface MultiSet<E> extends Iterable<E> {
 
     StringBuilder res = new StringBuilder();
     Iterator<E> iter = iterator();
-    res.append("{");
+    res.append(size() + " {");
     E elem = iter.next();
-    res.append(elem + ":" + multiplicity(elem));
+    res.append(elem + ": " + multiplicity(elem));
     
     while (iter.hasNext()) {
       elem = iter.next();
       res.append(", ");
-      res.append(elem + ":" + multiplicity(elem));
+      res.append(elem + ": " + multiplicity(elem));
     }
     res.append("}");
 
