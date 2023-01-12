@@ -11,10 +11,10 @@ public interface Ascoltabile {
   public String nome();
 
   /**
-   * Restituisce la durata totale dell'audio ascoltabile
+   * Restituisce la stringa che rappresenta la durata totale dell'audio ascoltabile, in formato HH:MM:SS o MM:SS (il più piccolo)
    * 
    * @return la durata totale dell'audio ascoltabile
    */
-  public int durata();
+  public String durata();
 
 }

@@ -101,12 +101,12 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
   }
 
   @Override
-  public int durata() {
+  public String durata() {
     int durata = 0;
     for (Brano b : brani) {
-      durata += b.durata();
+      durata += Durata.fromString(b.durata());
     }
-    return durata;
+    return Durata.toString(durata);
   }
 
   @Override

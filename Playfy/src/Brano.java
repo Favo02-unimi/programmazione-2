@@ -29,7 +29,7 @@ public record Brano(Album album, int posizione) implements Ascoltabile {
   }
 
   @Override
-  public int durata() {
+  public String durata() {
     return album.getDurataBrano(posizione);
   }
 

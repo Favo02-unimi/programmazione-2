@@ -38,7 +38,7 @@ public class Album implements Ascoltabile, Iterable<Brano> {
       }
 
       String[] tokens = brani[i].split(" - ");
-      int durataBrano = 0;
+      int durataBrano = Durata.fromString(tokens[0]);
       String nomeBrano = tokens[1];
 
       tempBrani.add(new BranoAlbum(nomeBrano, durataBrano));
@@ -53,12 +53,12 @@ public class Album implements Ascoltabile, Iterable<Brano> {
   }
 
   @Override
-  public int durata() {
+  public String durata() {
     int durata = 0;
     for (BranoAlbum b : brani) {
-      durata += b.durata();
+      durata += b.secDurata;
     }
-    return durata;
+    return Durata.toString(durata);
   }
 
   /**
@@ -159,12 +159,12 @@ public class Album implements Ascoltabile, Iterable<Brano> {
    * @throws IndexOutOfBoundsException se la posizione è invalida (< 0, >= length)
    * @return la durata del brano in posizione "posizione"
    */
-  public int getDurataBrano(int posizione) {
+  public String getDurataBrano(int posizione) {
     if (posizione < 0 || posizione >= brani.length) {
       throw new IndexOutOfBoundsException("La posizione non può essere invalida (<0, >= length)");
     }
 
-    return brani[posizione].durata;
+    return Durata.toString(brani[posizione].secDurata);
   }
 
   @Override
@@ -204,7 +204,7 @@ public class Album implements Ascoltabile, Iterable<Brano> {
     for (BranoAlbum b : brani) {
       if (b == null) return false;
     }
-    if (durata() <= 0) return false;
+    if (Durata.fromString(durata()) <= 0) return false;
     if (brani.length != Set.of(brani).size()) return false;
 
     return true;
@@ -214,36 +214,41 @@ public class Album implements Ascoltabile, Iterable<Brano> {
   /**
    * Record che implementa un BranoAlbum, un brano senza album (che non esiste fuori da album) con nome e durata
    */
-  private record BranoAlbum(String nome, int durata) implements Ascoltabile {
+  private record BranoAlbum(String nome, int secDurata) implements Ascoltabile {
 
     /**
      * Crea un nuovo brano di "Album.this" album
      * 
      * @param nome del brano
-     * @param durata del brano
+     * @param secDurata del brano
      * @throws NullPointerException se nome è null
-     * @throws IllegalArgumentException se durata è <= 0
+     * @throws IllegalArgumentException se secDurata è <= 0
      */
-    public BranoAlbum(String nome, int durata) {
+    public BranoAlbum(String nome, int secDurata) {
       if (nome == null) {
         throw new NullPointerException("Il nome del brano non può essere null");
       }
-      if (durata <= 0) {
+      if (secDurata <= 0) {
         throw new IllegalArgumentException("La durata del brano non può essere nulla o negativa");
       }
 
       this.nome = nome;
-      this.durata = durata;
+      this.secDurata = secDurata;
+    }
+
+    @Override
+    public String durata() {
+      return Durata.toString(secDurata);
     }
 
     /**
      * RI:
      *  nome != null
-     *  durata > 0
+     *  secDurata > 0
      */
     private boolean repOk() {
       if (nome == null) return false;
-      if (durata <= 0) return false;
+      if (secDurata <= 0) return false;
 
       return true;
     }
