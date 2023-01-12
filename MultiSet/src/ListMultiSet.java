@@ -60,8 +60,35 @@ public class ListMultiSet<E> implements MultiSet<E> {
       throw new NullPointerException("Il multiset da unire non può essere null");
     }
 
+    MultiSet<E> union = new ListMultiSet<>();
 
-    return null;
+    Iterator<? extends E> iter = this.iterator();
+    while(iter.hasNext()) {
+      E el = iter.next();
+      int qty = this.multiplicity(el);
+
+      if (o.multiplicity(el) > qty) {
+        qty = o.multiplicity(el);
+      }
+
+      union.addQty(el, qty);
+    }
+
+    iter = o.iterator();
+    while(iter.hasNext()) {
+      E el = iter.next();
+      int qty = o.multiplicity(el);
+
+      if (!union.contains(el)) {
+        if (this.multiplicity(el) > qty) {
+          qty = this.multiplicity(el);
+        }
+        
+        union.addQty(el, qty);
+      }
+    }
+
+    return union;
   }
 
   @Override
@@ -70,8 +97,23 @@ public class ListMultiSet<E> implements MultiSet<E> {
       throw new NullPointerException("Il multiset da intersecare non può essere null");
     }
     
+    MultiSet<E> intersection = new MapMultiSet<>();
 
-    return null;
+    Iterator<E> thisIter = this.iterator();
+    while(thisIter.hasNext()) {
+      E el = thisIter.next();
+      int qty = this.multiplicity(el);
+
+      if (o.contains(el)) {
+        if (o.multiplicity(el) < qty) {
+          qty = o.multiplicity(el);
+        }
+
+        intersection.addQty(el, qty);
+      }
+    }    
+
+    return intersection;
   }
   
   @Override
