@@ -108,11 +108,9 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
     }
 
     SortedSet<Brano> braniAlbum = new TreeSet<>();
-    Iterator<Brano> iter = brani.iterator();
-    while (iter.hasNext()) {
-      Brano branoAlbum = iter.next();
-      if (album.contains(branoAlbum.nome())) {
-        braniAlbum.add(branoAlbum);
+    for (Brano b : brani) {
+      if (album.contains(b.nome())) {
+        braniAlbum.add(b);
       }
     }
 
@@ -127,9 +125,8 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
   public Iterator<Album> albumIterator() {
 
     SortedSet<Album> albums = new TreeSet<>();
-    Iterator<Brano> iter = brani.iterator();
-    while (iter.hasNext()) {
-      albums.add(iter.next().album());
+    for (Brano b : brani) {
+      if (albums.add(b.album()));
     }
 
     return Collections.unmodifiableCollection(albums).iterator();
