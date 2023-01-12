@@ -3,10 +3,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Classe che implementa un MultiSet basato su una mappa
+ */
 public class MapMultiSet<E> implements MultiSet<E> {
 
   private Map<E, Integer> elems;
 
+  /**
+   * Crea un nuovo MapMultiSet
+   */
   public MapMultiSet() {
     elems = new HashMap<>();
   }

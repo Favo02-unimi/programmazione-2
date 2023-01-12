@@ -5,10 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Classe che implementa un MultiSet basato su una Lista
+ */
 public class ListMultiSet<E> implements MultiSet<E> {
 
   private List<E> elems;
 
+  /**
+   * Crea un nuovo ListMultiSet
+   */
   public ListMultiSet() {
     elems = new ArrayList<>();
   }
