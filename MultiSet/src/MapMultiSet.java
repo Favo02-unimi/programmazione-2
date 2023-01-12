@@ -69,6 +69,31 @@ public class MapMultiSet<E> implements MultiSet<E> {
 
     MultiSet<E> union = new MapMultiSet<>();
 
+    Iterator<? extends E> iter = this.iterator();
+    while(iter.hasNext()) {
+      E el = iter.next();
+      int qty = this.multiplicity(el);
+
+      if (o.multiplicity(el) > qty) {
+        qty = o.multiplicity(el);
+      }
+
+      union.addQty(el, qty);
+    }
+
+    iter = o.iterator();
+    while(iter.hasNext()) {
+      E el = iter.next();
+      int qty = o.multiplicity(el);
+
+      if (!union.contains(el)) {
+        if (this.multiplicity(el) > qty) {
+          qty = this.multiplicity(el);
+        }
+        
+        union.addQty(el, qty);
+      }
+    }
 
     return union;
   }
@@ -81,7 +106,21 @@ public class MapMultiSet<E> implements MultiSet<E> {
 
     MultiSet<E> intersection = new MapMultiSet<>();
 
-    return null;
+    Iterator<E> thisIter = this.iterator();
+    while(thisIter.hasNext()) {
+      E el = thisIter.next();
+      int qty = this.multiplicity(el);
+
+      if (o.contains(el)) {
+        if (o.multiplicity(el) < qty) {
+          qty = o.multiplicity(el);
+        }
+
+        intersection.addQty(el, qty);
+      }
+    }    
+
+    return intersection;
   }
 
   @Override
