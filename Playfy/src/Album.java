@@ -217,6 +217,26 @@ public class Album implements Ascoltabile, Iterable<Brano> {
   private record BranoAlbum(String nome, int durata) implements Ascoltabile {
 
     /**
+     * Crea un nuovo brano di "Album.this" album
+     * 
+     * @param nome del brano
+     * @param durata del brano
+     * @throws NullPointerException se nome è null
+     * @throws IllegalArgumentException se durata è <= 0
+     */
+    public BranoAlbum(String nome, int durata) {
+      if (nome == null) {
+        throw new NullPointerException("Il nome del brano non può essere null");
+      }
+      if (durata <= 0) {
+        throw new IllegalArgumentException("La durata del brano non può essere nulla o negativa");
+      }
+
+      this.nome = nome;
+      this.durata = durata;
+    }
+
+    /**
      * RI:
      *  nome != null
      *  durata > 0
