@@ -214,6 +214,20 @@ public class Album implements Ascoltabile, Iterable<Brano> {
   /**
    * Record che implementa un BranoAlbum, un brano senza album (che non esiste fuori da album) con nome e durata
    */
-  private record BranoAlbum(String nome, int durata) implements Ascoltabile {}
+  private record BranoAlbum(String nome, int durata) implements Ascoltabile {
+
+    /**
+     * RI:
+     *  nome != null
+     *  durata > 0
+     */
+    private boolean repOk() {
+      if (nome == null) return false;
+      if (durata <= 0) return false;
+
+      return true;
+    }
+
+  }
   
 }
