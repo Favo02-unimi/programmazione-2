@@ -1,24 +1,50 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Classe che implementa un album ascoltabile, una raccolta di brani ascoltabili
  */
 public class Album implements Ascoltabile, Iterable<Brano> {
 
-  private String nome;
-  private BranoAlbum[] brani;
+  private final String nome;
+  private final BranoAlbum[] brani;
 
   /**
    * Crea un nuovo album di nome "nome" contentente i brani passati in forma testuale
    * 
    * @param nome dell'album
    * @param brani contenuto nell'album in formato testuale
+   * @throws NullPointerException se nome è null
+   * @throws NullPointerException se brani è null
+   * @throws NullPointerException se un elemento di brani è null
    */
   public Album(String nome, String[] brani) {
+    if (nome == null) {
+      throw new NullPointerException("Il nome dell'album non può essere null");
+    }
 
+    this.nome = nome;
+
+    if (brani == null) {
+      throw new NullPointerException("I brani non possono essere null");
+    }
+
+    final SortedSet<BranoAlbum> tempBrani = new TreeSet<>();
+    for (int i = 0; i < brani.length; i++) {
+      if (brani[i] == null) {
+        throw new NullPointerException("Nessun brano può essere null");
+      }
+
+      String[] tokens = brani[i].split(" - ");
+      int durataBrano = 0;
+      String nomeBrano = tokens[1];
+
+      tempBrani.add(new BranoAlbum(nomeBrano, durataBrano));
+    }
+
+    this.brani = (BranoAlbum[])tempBrani.toArray();
   }
 
   @Override
@@ -111,6 +137,36 @@ public class Album implements Ascoltabile, Iterable<Brano> {
     return false;
   }
 
+  /**
+   * Restituisce il nome del brano in posizione "posizione"
+   * 
+   * @param posizione del brano di cui restituisce il nome
+   * @throws IndexOutOfBoundsException se la posizione è invalida (< 0, >= length)
+   * @return il nome del brano in posizione "posizione"
+   */
+  public String getNomeBrano(int posizione) {
+    if (posizione < 0 || posizione >= brani.length) {
+      throw new IndexOutOfBoundsException("La posizione non può essere invalida (<0, >= length)");
+    }
+
+    return brani[posizione].nome;
+  }
+
+  /**
+   * Restituisce la durata del brano in posizione "posizione"
+   * 
+   * @param posizione del brano di cui restituisce la durata
+   * @throws IndexOutOfBoundsException se la posizione è invalida (< 0, >= length)
+   * @return la durata del brano in posizione "posizione"
+   */
+  public int getDurataBrano(int posizione) {
+    if (posizione < 0 || posizione >= brani.length) {
+      throw new IndexOutOfBoundsException("La posizione non può essere invalida (<0, >= length)");
+    }
+
+    return brani[posizione].durata;
+  }
+
   @Override
   public Iterator<Brano> iterator() {
     return new Iterator<>() {
@@ -134,6 +190,25 @@ public class Album implements Ascoltabile, Iterable<Brano> {
     };
   }
 
+  /**
+   * RI:
+   *  nome != null
+   *  brani != null
+   *  ogni brano in brani != null
+   *  durata > 0
+   *  no brani ripetuti
+   */
+  private boolean repOk() {
+    if (nome == null) return false;
+    if (brani == null) return false;
+    for (BranoAlbum b : brani) {
+      if (b == null) return false;
+    }
+    if (durata() <= 0) return false;
+    if (brani.length != Set.of(brani).size()) return false;
+
+    return true;
+  }
 
 
   /**
