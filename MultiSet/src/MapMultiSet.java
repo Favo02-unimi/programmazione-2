@@ -41,7 +41,13 @@ public class MapMultiSet<E> implements MultiSet<E> {
       return 0;
     } else {
       int mult = multiplicity(o);
-      elems.put((E)o, mult-1);
+
+      if (mult == 1) {
+        elems.remove(o);
+      } else {
+        elems.put((E)o, mult-1);
+      }
+
       return mult;
     }
   }
