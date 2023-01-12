@@ -28,6 +28,9 @@ public class MapMultiSet<E> implements MultiSet<E> {
     } else {
       elems.put(e, elems.get(e)+1);
     }
+
+    assert repOk();
+
     return multiplicity(e);
   }
 
@@ -38,6 +41,9 @@ public class MapMultiSet<E> implements MultiSet<E> {
     }
 
     if (!elems.containsKey(o)) {
+
+      assert repOk();
+      
       return 0;
     } else {
       int mult = multiplicity(o);
@@ -47,6 +53,8 @@ public class MapMultiSet<E> implements MultiSet<E> {
       } else {
         elems.put((E)o, mult-1);
       }
+
+      assert repOk();
 
       return mult;
     }
@@ -143,6 +151,22 @@ public class MapMultiSet<E> implements MultiSet<E> {
   @Override
   public String toString() {
     return internalToString();
+  }
+
+  /**
+   * RI:
+   *  elems != null
+   *  ogni chiave di elems != null
+   *  ogni value di elems > 0
+   */
+  private boolean repOk() {
+    if (elems == null) return false;
+    for (E el : elems.keySet()) {
+      if (el == null) return false;
+      if (elems.get(el) <= 0) return false;
+    }
+
+    return true;
   }
 
 }

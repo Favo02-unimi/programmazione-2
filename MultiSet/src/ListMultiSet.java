@@ -26,6 +26,9 @@ public class ListMultiSet<E> implements MultiSet<E> {
     }
 
     elems.add(e);
+
+    assert repOk();
+
     return multiplicity(e);
   }
 
@@ -37,6 +40,9 @@ public class ListMultiSet<E> implements MultiSet<E> {
 
     int mult = multiplicity(o);
     elems.remove(o);
+
+    assert repOk();
+
     return mult;
   }
 
@@ -131,6 +137,20 @@ public class ListMultiSet<E> implements MultiSet<E> {
   @Override
   public String toString() {
     return internalToString();
+  }
+
+  /**
+   * RI:
+   *  elems != null
+   *  ogni elemento di elems != null
+   */
+  private boolean repOk() {
+    if (elems == null) return false;
+    for (E el : elems) {
+      if (el == null) return false;
+    }
+
+    return true;
   }
 
 }
