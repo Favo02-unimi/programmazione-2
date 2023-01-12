@@ -51,7 +51,9 @@ public class MapMultiSet<E> implements MultiSet<E> {
       if (mult == 1) {
         elems.remove(o);
       } else {
-        elems.put((E)o, mult-1);
+        @SuppressWarnings("unchecked")
+        E e = (E) o;
+        elems.put(e, mult-1);
       }
 
       assert repOk();
