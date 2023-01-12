@@ -8,8 +8,23 @@ import java.util.TreeSet;
  */
 public class Playlist implements Ascoltabile, Iterable<Brano> {
   
-  private String nome;
-  private SortedSet<Brano> brani;
+  private final String nome;
+  private final SortedSet<Brano> brani;
+
+  /**
+   * Crea una nuova Playlist vuota dal nome
+   * 
+   * @param nome della playlist
+   * @throws NullPointerException se nome è null
+   */
+  public Playlist(String nome) {
+    if (nome == null) {
+      throw new NullPointerException("Il nome della playlist non può essere null");
+    }
+
+    this.nome = nome;
+    this.brani = new TreeSet<>();
+  }
 
   /**
    * Aggiunge il brano "brano" alla playlist, non fa nulla se il brano è già contenuto
@@ -23,6 +38,8 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
     }
 
     brani.add(brano);
+
+    assert repOk();
   }
 
   /**
@@ -37,6 +54,8 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
     }
 
     brani.remove(brano);
+
+    assert repOk();
   }  
 
   /**
@@ -130,6 +149,22 @@ public class Playlist implements Ascoltabile, Iterable<Brano> {
     }
 
     return Collections.unmodifiableCollection(albums).iterator();
+  }
+
+  /**
+   * RI:
+   *  nome != null
+   *  brani != null
+   *  ogni brano in brani != null
+   */
+  private boolean repOk() {
+    if (nome == null) return false;
+    if (brani == null) return false;
+    for (Brano b : brani) {
+      if (b == null) return false;
+    }
+
+    return true;
   }
 
 }
