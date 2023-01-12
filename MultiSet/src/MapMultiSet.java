@@ -128,4 +128,9 @@ public class MapMultiSet<E> implements MultiSet<E> {
     return Collections.unmodifiableCollection(elems.keySet()).iterator();
   }
 
+  @Override
+  public String toString() {
+    return internalToString();
+  }
+
 }

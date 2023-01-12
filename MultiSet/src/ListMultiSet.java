@@ -122,4 +122,9 @@ public class ListMultiSet<E> implements MultiSet<E> {
     return Collections.unmodifiableCollection(supporto).iterator();
   }
 
+  @Override
+  public String toString() {
+    return internalToString();
+  }
+
 }
