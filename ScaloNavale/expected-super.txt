@@ -1,0 +1,9 @@
+0: < Mowgli[5], Simba[9], LiloPelekai[5], Baloo[21], BuzzLightyear[12], Woody[6], MickeyMouse[4] #
+1: < Antares[51], Sun[9], Altair[12], Sirius[42], Orion[24], Pollux[11], Castor[33], Polaris[10] #
+2: < Calcium[40], Iron[55], Argon[39], Hydrogen[1], Neon[10] #
+3: < Madrid[3], Rome[3], Barcelona[1], Dubai[3], Tokyo[14], Paris[2], London[9] #
+1
+0: < Mowgli[5], Simba[9], LiloPelekai[5], Baloo[21], BuzzLightyear[12], Woody[6], MickeyMouse[4] #
+1: < Sirius[42], Orion[24], Pollux[11], Castor[33], Polaris[10] #
+2: < Antares[51], Sun[9], Altair[12], Calcium[40], Iron[55], Argon[39], Hydrogen[1], Neon[10] #
+3: < Madrid[3], Rome[3], Barcelona[1], Dubai[3], Tokyo[14], Paris[2], London[9] #
