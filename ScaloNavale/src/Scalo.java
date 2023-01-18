@@ -140,7 +140,7 @@ public class Scalo {
      * @return true se il molo di numero "numeroMolo" esiste, false altrimenti
      */
     public boolean moloExists(int numeroMolo) {
-        return (numeroMolo < 0 || numeroMolo >= moli.size()); 
+        return !(numeroMolo < 0 || numeroMolo >= moli.size()); 
     }
 
     /**
@@ -255,8 +255,8 @@ public class Scalo {
             StringBuilder str = new StringBuilder();
             Object[] tempStack = navi.toArray(); // mi serve mantenere lo stack intatto, quindi non è possibile fare delle pop
             str.append("< ");
-            str.append(tempStack[0].toString());
-            for (int i = 1; i < tempStack.length; i++) {
+            str.append(tempStack[tempStack.length-1].toString());
+            for (int i = tempStack.length-2; i >= 0; i--) {
                 str.append(", ");
                 str.append(tempStack[i].toString());
             }

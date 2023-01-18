@@ -75,7 +75,7 @@ public abstract class RimorchiatoreAbstract implements Rimorchiatore {
         if (qty < 1) {
             throw new IllegalArgumentException("Il numero di navi da spostare non può essere minore di 1");
         }
-        if (scalo.moloExists(from) || scalo.moloExists(to)) {
+        if (!(scalo.moloExists(from) || scalo.moloExists(to))) {
             throw new IllegalArgumentException("I moli degli spostamenti non esistono");
         }
     }
