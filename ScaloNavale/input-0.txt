@@ -1,0 +1,5 @@
+4
+MickeyMouse 4 Woody 6 BuzzLightyear 12 Baloo 21 LiloPelekai 5 Simba 9 Mowgli 5
+Polaris 10 Castor 33 Pollux 11 Orion 24 Sirius 42 Altair 12 Sun 9 Antares 51
+Neon 10 Hydrogen 1 Argon 39 Iron 55 Calcium 40 
+London 9 Paris 2 Tokyo 14 Dubai 3 Barcelona 1 Rome 3 Madrid 3
