@@ -174,7 +174,7 @@ public class Scalo {
     /**
      * Classe che implementa un molo, una fila navi cargo dalla quale l'ultima che entra è la prima che salpa (pila)
      */
-    public class Molo {
+    private class Molo {
         // un molo non ha senso di esistere senza uno scalo, quindi la ho inserita come inner class di Scalo, in modo che solo scalo stesso possa chiamare le operazioni dirette sui moli, mentre dall'esterno è possibile interfacciarsi solo con scalo
         // in questo modo posso evitare di gestire due navi uguali nello stesso molo, dato che solo lo scalo è in grado di far attrccare delle navi ad un molo e lo scalo controlla che non esistanodue navi uguali in tutto lo scalo
         
@@ -238,15 +238,6 @@ public class Scalo {
             return navi.isEmpty();
         }
 
-        /**
-         * Restituisce lo scalo del quale il molo fa parte
-         * 
-         * @return lo scalo del quale il molo fa parte
-         */
-        public Scalo getScalo() {
-            return Scalo.this;
-        }
-
         @Override
         public String toString() {
             if (navi.isEmpty()) {
@@ -266,9 +257,11 @@ public class Scalo {
 
         /**
          * RI:
-         *  sempre valido
+         *  navi != null
          */
         private boolean repOk() {
+            if (navi == null) return false;
+
             // la gestione che non ci siano navi duplicate è gestita dall'intero scalo, non dal singolo molo dato che non avrebbe senso che due moli diversi abbiano una nave uguale (con lo stesso nome)
             // di conseguenza non è necessario gestire il casoin cui due navi uguali attraccano allo stesso molo, dato che devono essere stare prima validate dallo scalo
             return true;
