@@ -59,6 +59,7 @@ public class RimorchiatorePrudente extends RimorchiatoreAbstract {
         // attaccare prima barca indipendentemente dal peso
         temp.push(getScalo().salpa(from));
         curCarico = temp.peek().getPeso(); // salvare suo peso
+        curSpostate++;
 
         // finchè ci stanno navi, attacca
         while (curSpostate < qty && (curCarico + getScalo().pesoProssimaASalpare(from) <= caricoMassimo)) {
@@ -66,8 +67,10 @@ public class RimorchiatorePrudente extends RimorchiatoreAbstract {
             curCarico += temp.peek().getPeso();
             curSpostate++;
         }
+
         // stacca le navi attaccate
-        for (int i = 0; i < temp.size(); i++) {
+        int rimorchiatoreLoad = temp.size(); // la size dello stack cambia durante l'esecuzione del loop
+        for (int i = 0; i < rimorchiatoreLoad; i++) {
             getScalo().attracca(temp.pop(), to);
         }
 
