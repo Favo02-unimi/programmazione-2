@@ -1,0 +1,8 @@
+Equazione:
+	2HCl + 2Na -> 2ClNa + H2, bilanciata
+Reagenti:
+	HCl, 36.4609, composta
+	Na, 22.98977, semplice
+Prodotto:
+	ClNa, 58.44277, composta
+	H2, 2.0158, semplice
